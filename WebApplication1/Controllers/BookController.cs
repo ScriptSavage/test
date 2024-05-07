@@ -38,7 +38,7 @@ public class BookController : ControllerBase
     public async Task<IActionResult> AddBook(BooksAndGenres books)
     {
         var x =  _BookRepositories.AddBooksAndGenres(books);
-        return Ok(x);
+        return Created(Request.Path.Value ?? "/api/books", AddBook(books));
     }
 
 }
